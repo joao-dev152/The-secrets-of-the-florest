@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://cexd5ero54ihc"]
+
+[ext_resource type="Script" path="res://scripts/sign.gd" id="1_koruu"]
+[ext_resource type="Texture2D" uid="uid://ciayqw4wsn02q" path="res://assets/Sign.png" id="2_ls60h"]
+
+[sub_resource type="Animation" id="Animation_lttom"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sign:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u2j4l"]
+resource_name = "fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sign:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 56), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4i10f"]
+_data = {
+"RESET": SubResource("Animation_lttom"),
+"fade": SubResource("Animation_u2j4l")
+}
+
+[node name="Sign" type="CanvasLayer"]
+script = ExtResource("1_koruu")
+
+[node name="sign" type="Node2D" parent="."]
+
+[node name="teture" type="Sprite2D" parent="sign"]
+position = Vector2(120, -24)
+scale = Vector2(4, 4)
+texture = ExtResource("2_ls60h")
+
+[node name="Label" type="Label" parent="sign"]
+offset_left = 72.0
+offset_top = -48.0
+offset_right = 172.0
+offset_bottom = -25.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.414704, 0.414704, 0.414704, 1)
+theme_override_constants/outline_size = 7
+text = "Wood florest"
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4i10f")
+}
+autoplay = "fade"
+speed_scale = 0.5

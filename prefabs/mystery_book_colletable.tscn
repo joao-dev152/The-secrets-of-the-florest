@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci6eao2btjp5g"]
+
+[ext_resource type="Script" path="res://scripts/mystery_book_colletable.gd" id="1_28nam"]
+[ext_resource type="Texture2D" uid="uid://cunfht5f38re8" path="res://assets/Shikashi's Fantasy Icons Pack v2/#2 - Transparent Icons & Drop Shadow.png" id="2_oosm5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slat0"]
+size = Vector2(66, 83)
+
+[node name="Mystery_book_colletable" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_28nam")
+
+[node name="texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_oosm5")
+region_enabled = true
+region_rect = Rect2(224, 416, 32, 32)
+
+[node name="colision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_slat0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

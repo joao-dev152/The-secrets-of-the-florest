@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgqc7iyfnmhic"]
+
+[ext_resource type="Script" path="res://addons/awesome_splash/core/SplashContainer.gd" id="1_alwbv"]
+[ext_resource type="PackedScene" uid="uid://c6u5454ya2v2r" path="res://src/demo_collection/slide/splash_screen.tscn" id="2_dp00c"]
+[ext_resource type="PackedScene" uid="uid://duhv2n87agft6" path="res://scenes/title_screen.tscn" id="2_s13mg"]
+[ext_resource type="PackedScene" uid="uid://deek6xkn5e5p2" path="res://src/demo_collection/aqua/splash_screen.tscn" id="4_twdgi"]
+[ext_resource type="PackedScene" uid="uid://dow2wallc70g3" path="res://src/demo_info_view/controller_bw/controller_bw.tscn" id="5_5um80"]
+
+[node name="SplashContainer" type="Node2D"]
+script = ExtResource("1_alwbv")
+move_to_scene = ExtResource("2_s13mg")
+trainsition_type = 5
+
+[node name="SplashSlide" parent="." instance=ExtResource("2_dp00c")]
+
+[node name="SplashAqua" parent="." instance=ExtResource("4_twdgi")]
+title = "Jg mini dev"
+description = "Gamedev br"
+
+[node name="best_with_controller_bw" parent="." instance=ExtResource("5_5um80")]

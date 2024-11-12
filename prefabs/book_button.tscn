@@ -1,0 +1,96 @@
+[gd_scene load_steps=10 format=3 uid="uid://x7ewjchtf37h"]
+
+[ext_resource type="Script" path="res://scripts/book_button.gd" id="1_3oyec"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhj4n"]
+bg_color = Color(0, 0, 0.160784, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.411765, 0, 0.792157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krjfc"]
+bg_color = Color(0, 0, 0.160784, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.411765, 0, 0.792157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoo7y"]
+bg_color = Color(0, 0, 0.160784, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.411765, 0, 0.792157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tqyi"]
+bg_color = Color(0, 0, 0.235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.411765, 0, 0.792157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xe84"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.411765, 0, 0.792157, 1)
+
+[sub_resource type="Theme" id="Theme_qipya"]
+Button/styles/focus = SubResource("StyleBoxFlat_dhj4n")
+Button/styles/hover = SubResource("StyleBoxFlat_krjfc")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_xoo7y")
+Button/styles/normal = SubResource("StyleBoxFlat_7tqyi")
+Button/styles/pressed = SubResource("StyleBoxFlat_3xe84")
+
+[sub_resource type="InputEventAction" id="InputEventAction_v3da7"]
+action = &"open_book"
+
+[sub_resource type="Shortcut" id="Shortcut_pkvj1"]
+events = [SubResource("InputEventAction_v3da7")]
+
+[node name="Book_button" type="CanvasLayer"]
+script = ExtResource("1_3oyec")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_qipya")
+theme_override_font_sizes/font_size = 25
+shortcut = SubResource("Shortcut_pkvj1")
+text = "Read the book."
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

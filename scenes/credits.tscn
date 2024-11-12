@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds640gqkar1mo"]
+
+[ext_resource type="Script" path="res://addons/awesome_splash/core/SplashContainer.gd" id="1_405op"]
+[ext_resource type="PackedScene" uid="uid://c6u5454ya2v2r" path="res://src/demo_collection/slide/splash_screen.tscn" id="2_o0vk3"]
+[ext_resource type="PackedScene" uid="uid://duhv2n87agft6" path="res://scenes/title_screen.tscn" id="2_w6wnt"]
+
+[node name="SplashContainer" type="Node2D"]
+script = ExtResource("1_405op")
+custom_node/type = 0
+custom_node/default_time = 1.0
+skip/type = 0
+move_to_scene = ExtResource("2_w6wnt")
+trainsition_type = 5
+min_pixel = 1.0
+max_pixel = 128.0
+transition_time = 1.0
+
+[node name="SplashSlide" parent="." instance=ExtResource("2_o0vk3")]
+title = "Made with"
+description = "Godot Game engine"
+
+[node name="SplashSlide2" parent="." instance=ExtResource("2_o0vk3")]
+title = "Made for"
+description = "Game off 2024"
+
+[node name="SplashSlide3" parent="." instance=ExtResource("2_o0vk3")]
+title = "Developed by"
+description = "Jg mini dev"
+title_font_size = 115.0

@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7akprgce8a6"]
+
+[ext_resource type="Script" path="res://scripts/book.gd" id="1_7ydpw"]
+[ext_resource type="Texture2D" uid="uid://bqeutrw0hadvl" path="res://assets/6.png" id="2_hl2fs"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_tyhov"]
+action = &"close_book"
+
+[sub_resource type="Shortcut" id="Shortcut_r173x"]
+events = [SubResource("InputEventAction_tyhov")]
+
+[node name="book" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_7ydpw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.192157)
+
+[node name="book01" type="Sprite2D" parent="."]
+position = Vector2(640, 340)
+texture = ExtResource("2_hl2fs")
+region_enabled = true
+region_rect = Rect2(1784, 1856, 832, 656)
+
+[node name="book02" type="Sprite2D" parent="."]
+position = Vector2(640, 320)
+texture = ExtResource("2_hl2fs")
+region_enabled = true
+region_rect = Rect2(152, 1008, 656, 536)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 354.0
+offset_top = 126.0
+offset_right = 899.0
+offset_bottom = 149.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 9
+text = "A magical mist distorts reality. What you see may not be what it seems"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 980.0
+offset_top = 38.0
+offset_right = 1046.0
+offset_bottom = 109.0
+theme_override_font_sizes/font_size = 50
+shortcut = SubResource("Shortcut_r173x")
+text = "X"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

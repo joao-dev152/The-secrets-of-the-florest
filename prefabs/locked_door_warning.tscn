@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8ilntnpbfb1t"]
+
+[ext_resource type="Script" path="res://scripts/locked_door_warning.gd" id="1_6i6w8"]
+
+[node name="LockedDoorWarning" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_6i6w8")
+
+[node name="dialogbox" type="ColorRect" parent="."]
+offset_left = 16.0
+offset_top = 480.0
+offset_right = 1264.0
+offset_bottom = 624.0
+
+[node name="dialogboxMargin01" type="ColorRect" parent="."]
+offset_left = 16.0
+offset_top = 480.0
+offset_right = 40.0
+offset_bottom = 624.0
+color = Color(0.236334, 0.236334, 0.236334, 1)
+
+[node name="dialogboxMargin02" type="ColorRect" parent="."]
+offset_left = 1240.0
+offset_top = 480.0
+offset_right = 1264.0
+offset_bottom = 624.0
+color = Color(0.236334, 0.236334, 0.236334, 1)
+
+[node name="dialogboxMargin03" type="ColorRect" parent="."]
+offset_left = 40.0
+offset_top = 600.0
+offset_right = 1240.0
+offset_bottom = 624.0
+color = Color(0.236334, 0.236334, 0.236334, 1)
+
+[node name="dialogboxMargin04" type="ColorRect" parent="."]
+offset_left = 40.0
+offset_top = 480.0
+offset_right = 1240.0
+offset_bottom = 504.0
+color = Color(0.236334, 0.236334, 0.236334, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 144.0
+offset_top = 528.0
+offset_right = 1037.0
+offset_bottom = 577.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 35
+text = "This door is locked. I need a key."

@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://dskrye5srardk"]
+
+[ext_resource type="Texture2D" uid="uid://b5gvyybrxuimv" path="res://assets/basics/tilesets/walls/wooden_door_b.png" id="1_8stw7"]
+[ext_resource type="Script" path="res://scripts/doors_component.gd" id="1_bqbei"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xis7o"]
+size = Vector2(38, 12.5)
+
+[sub_resource type="Animation" id="Animation_2l3s0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_afqet"]
+resource_name = "oppening"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_csddj"]
+_data = {
+"RESET": SubResource("Animation_2l3s0"),
+"oppening": SubResource("Animation_afqet")
+}
+
+[node name="DoorsComponent" type="Area2D"]
+z_index = 1
+script = ExtResource("1_bqbei")
+teleport_position = Vector2(2088, 328)
+
+[node name="texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_8stw7")
+hframes = 2
+
+[node name="colision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 13.25)
+shape = SubResource("RectangleShape2D_xis7o")
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_csddj")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="Anim" to="." method="_on_anim_animation_finished"]
